@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificare</title>
+  <style>
+    #code-validator {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+    }
+    #code-input {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      text-align: center;
+    }
+    input[type=text] {
+      text-transform: uppercase;
+    }
+    input[type=text]::-webkit-inner-spin-button,
+    input[type=text]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <input id="code-input" type="text" maxlength="6" placeholder="XXXXXX">
+  <div id="code-validator"></div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('code-input').addEventListener('input', validateCode);
+
+    function validateCode() {
+      const inputCode = document.getElementById('code-input').value.toUpperCase();
+      const currentCode = localStorage.getItem('currentCode');
+      const codeExpiry = localStorage.getItem('codeExpiry');
+      if (Date.now() > codeExpiry) {
+        document.getElementById('code-validator').innerText = 'Bilet invalid';
+        document.getElementById('code-validator').style.color = 'red';
+      } else if (inputCode === currentCode) {
+        document.getElementById('code-validator').innerText = 'Bilet valid!';
+        document.getElementById('code-validator').style.color = 'green';
+      } else if (document.getElementById('code-input').value.length === 6) {
+        document.getElementById('code-validator').innerText = 'Invalid code';
+        document.getElementById('code-validator').style.color = 'red';
+      } else {
+        document.getElementById('code-validator').innerText = '';
+      }
+    }
+  });
+</script>
+</html>
