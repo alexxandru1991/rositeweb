@@ -40,6 +40,18 @@
           font-size: 1.5em;
           font-weight: bold;
         }
+        
+        .blackout {
+          background-color: black !important;
+        }
+
+        #countdown-timer {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          padding: 20px;
+        }
 
         #connect-btn {
           padding: 0.5em 1em;
@@ -223,7 +235,10 @@
         <p>Faceti scroll inapoi pentru slide-ul anterior.</p>
       </div>
     </div>
-    <div id="footer">All rights reserved by Rositeweb 2025.</div>
+    <footer id="footer">
+      <span>All rights reserved by Rositeweb 2025.</span>
+      <div id="countdown-timer" style="float: right; padding: 20px;"></div>
+    </footer>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -287,5 +302,34 @@
         }
       });
     });
+    
+    // Numar invers de inchidere
+    
+    const body = document.body;
+    const countdownTimerElement = document.getElementById('countdown-timer');
+
+    function blackoutWebsite() {
+      body.style.background = 'black';
+      body.style.color = 'black';
+      countdownTimerElement.style.color = 'black';
+      const elements = document.querySelectorAll('*');
+      elements.forEach(element => {
+        element.style.background = 'black';
+        element.style.color = 'black';
+      });
+    }
+
+    function countdown(seconds) {
+      let intervalId = setInterval(() => {
+        countdownTimerElement.textContent = `${seconds}`;
+        if (seconds === 0) {
+          clearInterval(intervalId);
+          blackoutWebsite();
+        }
+        seconds--;
+      }, 1000);
+    }
+
+    countdown(300);
 </script>
 </html>
