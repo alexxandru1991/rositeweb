@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Rositeweb</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        #header {
+          padding-top: env(safe-area-inset-top);
+          padding-left: env(safe-area-inset-left);
+          padding-right: env(safe-area-inset-right);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1em 20px;
+          background-color: #000;
+          color: white;
+          height: 100px;
+          
+          position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        #header span {
+          font-size: 1.5em;
+          font-weight: bold;
+        }
+
+        #connect-btn {
+          padding: 0.5em 1em;
+          border: none;
+          border-radius: 0.25em;
+          background-color: white;
+          color: #000;
+          cursor: pointer;
+        }
+
+        #connect-btn:hover {
+          background-color: black;
+          color: white;
+        }
+
+        .form-popup {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: #000;
+          padding: 20px;
+          border: 1px solid #fff;
+          border-radius: 0.25em;
+          z-index: 1000;
+        }
+
+        .form-popup.open {
+          display: block;
+        }
+
+        #sign-in-form, #sign-up-form {
+          margin-bottom: 20px;
+          
+        }
+        
+        #sign-in-form input[type="submit"], #sign-up-form input[type="submit"] {
+          background-color: #fff;
+          color: #000;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 0.25em;
+          cursor: pointer;
+        }
+
+        #main {
+            padding-top: 100px; /* Add padding to account for the fixed header */
+            padding-bottom: 100px; /* Add padding to account for the fixed footer */
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #container {
+          scroll-snap-type: y mandatory;
+          overflow-y: scroll;
+          height: 100vh; /* or any fixed height */
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        #container::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, and Opera */
+        }
+
+        #main-section, #subsection, #third-section {
+          scroll-snap-align: start;
+          height: 100vh; /* or any fixed height */
+          padding: 20px;
+        }
+
+        #main-section {
+          background-size: cover;
+          width:100%;
+          height:100%;
+          background-color: white;
+        }
+
+        #subsection {
+          background-size: cover;
+          width:100%;
+          height:100%;
+          background-color: white;
+        }
+
+        #third-section {
+          background-size: cover;
+          width:100%;
+          height:100%;
+          background-color: white;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        </style>
+</head>
+<body>
+    <div id="header">
+      <span>Rositeweb</span>
+      <button id="connect-btn">Conecteaza-ma</button>
+      <div class="form-popup">
+        <form id="sign-in-form">
+          <h2>Conectare</h2>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email"><br><br>
+          <label for="password">Parola:</label>
+          <input type="password" id="password" name="password"><br><br>
+          <input type="submit" value="Conectare">
+        </form>
+        <form id="sign-up-form">
+          <h2>Inscriere</h2>
+          <label for="new-email">Email:</label>
+          <input type="email" id="new-email" name="new-email"><br><br>
+          <label for="new-password">Parola:</label>
+          <input type="password" id="new-password" name="new-password"><br><br>
+          <label for="confirm-password">Parola:</label>
+          <input type="password" id="confirm-password" name="confirm-password"><br><br>
+          <input type="submit" value="Inscriere">
+        </form>
+      </div>
+    </div>
+    <div id="container">
+      <div id="main-section">
+        <h1>Buna ziua!</h1>
+        <p>Acest website este drespre crearea altui website<br>
+        <p>Preturile variaza intre 500 RON si 5.000 RON<br>
+           in functie de complexitate si de cea ce va doriti<br>
+           pe site.<br>
+        <p>Daca are mai mult de o pagina acesta va costa<br>
+           mai mult, daca contine optiuni de redirectionare acesta<br>
+           va costa mai mult.<br>
+        <p>Daca doriti un website de prezentare care sa contina cinci<br>
+           pagini distincte acesta va costa 2.000 RON adica apoximativ<br>
+           400 RON pe pagina creata in functie de continut.<br>
+        <p>Daca doriti un sistem de logare in care sa aveti utilizator<br>
+           un astfel de website poate fi mai complex si poate costa intre<br>
+           3.000 RON si 5.000 RON in functie de nivelul de complexitate.<br>
+        <p>Faceti scroll pentru urmatorul slide.</p>
+      </div>
+      <div id="subsection">
+          <h1>Scroll</h1>
+          <p>Vreau sa va aduc la cunostinta modul de lucru.<br>
+             In primul rand pentru crearea website-ului dumneavoastra<br>
+             vom avea nevoie de descriere aprofundata despre cea ce<br>
+             reprezentati, activitatea si scopul urmarit al site-ului.<br>
+          <p>Majoritatea website-urilor de prezentare contin poze,<br>
+             va voi ruga sa atasati la e-mail pe langa continutul dorit<br>
+             si pozele dorite sa le afisati pe site-ul dumneavostra<br>
+             ca in acest fel in momentul in care incep sa lucrez la site<br>
+             sa am tot continutul la indeamna pentru a nu va suna repetitiv<br>
+             in cazul in care mai lipseste ceva.<br>
+          <p>Daca ati uitat ceva anume ori doriti ceva anume pe site,<br>
+             nu va ingrijorati deoarece se pot face modificari pe<br>
+             parcurs daca tinem legatura.<br>
+          <p>Datele mele de contact sunt afisate pe urmatorul slide</br>
+          <p>Faceti scroll pentru urmatorul slide.</p>
+      </div>
+      <div id="third-section">
+        <h1>Besleaga Alexandru Marian</h1>
+        <p>E-mail: alex.m.besleaga.91@icloud.com<br>
+           Telefon: +40 725 500 865<br>
+           Adresa: Bulevardul Pipera Tunari 152-156<br>
+        <p>Ma puteti contacta oricand dar sunt dispus sa lucrez<br>
+           doar sambata de la ora 12:00 la ora 20:00 deoarece<br>
+           acesta este programul meu de lucru online.<br>
+        <p>Daca aveti nevoie de asistenta va rog sa nu ezitati<br>
+           sa comunicati informatiile dorite a fi transmise<br>
+        <p>Multumesc anticipat pentru intelegere si pentru recomandare!</p>
+        <p>Faceti scroll inapoi pentru slide-ul anterior.</p>
+      </div>
+    </div>
+    <div id="footer">All rights reserved by Rositeweb 2025.</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('connect-btn').addEventListener('click', function() {
+        var popup = document.querySelector('.form-popup');
+        popup.classList.toggle('open');
+      });
+
+      // Close popup when clicking outside
+      document.addEventListener('click', function(event) {
+        var popup = document.querySelector('.form-popup');
+        var button = document.getElementById('connect-btn');
+        if (event.target !== popup && event.target !== button && !popup.contains(event.target) && !button.contains(event.target)) {
+          popup.classList.remove('open');
+        }
+      });
+
+      document.getElementById('sign-up-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var newEmail = document.getElementById('new-email').value;
+        var newPassword = document.getElementById('new-password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
+
+        if (newEmail && newPassword && confirmPassword && newPassword === confirmPassword) {
+          var users = JSON.parse(localStorage.getItem('users')) || [];
+          var existingUser = users.find(function(user) {
+            return user.email === newEmail;
+          });
+
+          if (existingUser) {
+            alert('Email already exists');
+          } else {
+            users.push({
+              email: newEmail,
+              password: newPassword
+            });
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify({ email: newEmail }));
+            window.location.href = 'index.html';
+          }
+        } else {
+          alert('Please fill in all fields and ensure passwords match');
+        }
+      });
+
+      document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        var existingUser = users.find(function(user) {
+          return user.email === email && user.password === password;
+        });
+
+        if (existingUser) {
+          localStorage.setItem('currentUser', JSON.stringify({ email: email }));
+          window.location.href = 'site.html';
+        } else {
+          alert('Invalid email or password');
+        }
+      });
+    });
+</script>
+</html>

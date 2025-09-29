@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Site</title>
+</head>
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        console.log('User:', currentUser.email);
+      } else {
+        console.log('No user logged in');
+      }
+    });
+  </script>
+</body>
+</html>
