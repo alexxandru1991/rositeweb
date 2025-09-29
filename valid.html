@@ -1,58 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Verificare</title>
+  <title>Verifica</title>
   <style>
-    #code-validator {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 24px;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
     }
-    #code-input {
+    .container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 24px;
       text-align: center;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    input[type=text] {
-      text-transform: uppercase;
+    #code-input {
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
-    input[type=text]::-webkit-inner-spin-button,
-    input[type=text]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+    #validate-btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+    #validate-btn:hover {
+      background-color: #3e8e41;
+    }
+    #result {
+      font-size: 18px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <input id="code-input" type="text" maxlength="6" placeholder="XXXXXX">
-  <div id="code-validator"></div>
-</body>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('code-input').addEventListener('input', validateCode);
+  <div class="container">
+    <input id="code-input" type="text" placeholder="Introdu codul">
+    <button id="validate-btn" onclick="validateCode()">Verifica</button>
+    <div id="result"></div>
+  </div>
 
+  <script>
     function validateCode() {
-      const inputCode = document.getElementById('code-input').value.toUpperCase();
-      const currentCode = localStorage.getItem('currentCode');
-      const codeExpiry = localStorage.getItem('codeExpiry');
-      if (Date.now() > codeExpiry) {
-        document.getElementById('code-validator').innerText = 'Bilet invalid';
-        document.getElementById('code-validator').style.color = 'red';
-      } else if (inputCode === currentCode) {
-        document.getElementById('code-validator').innerText = 'Bilet valid!';
-        document.getElementById('code-validator').style.color = 'green';
-      } else if (document.getElementById('code-input').value.length === 6) {
-        document.getElementById('code-validator').innerText = 'Invalid code';
-        document.getElementById('code-validator').style.color = 'red';
+      const inputCode = document.getElementById('code-input').value;
+      const storedCode = localStorage.getItem('currentCode');
+      const codeExpiry = parseInt(localStorage.getItem('codeExpiry'));
+
+      if (inputCode === storedCode && Date.now() < codeExpiry) {
+        document.getElementById('result').innerText = 'Cod valid';
+      } else if (inputCode !== storedCode) {
+        document.getElementById('result').innerText = 'Cod invalid';
       } else {
-        document.getElementById('code-validator').innerText = '';
+        document.getElementById('result').innerText = 'Cod-ul a expirat!';
       }
     }
-  });
-</script>
+  </script>
+</body>
 </html>

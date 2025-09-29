@@ -59,8 +59,9 @@
       const doc = new jsPDF();
       doc.setFontSize(24);
       doc.text(`Your code: ${document.getElementById('code-generator').innerText}`, 10, 20);
+      const expiryDate = new Date(parseInt(localStorage.getItem('codeExpiry')));
       doc.setFontSize(18);
-      doc.text(`Expiry date: ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()}`, 10, 30);
+      doc.text(`Expiry date: ${expiryDate.toLocaleDateString()}`, 10, 30);
       doc.save('code.pdf');
     }
   });
