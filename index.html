@@ -1,323 +1,41 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Rositeweb</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            background-color: #000;
-        }
-        #header {
-          padding-top: env(safe-area-inset-top);
-          padding-left: env(safe-area-inset-left);
-          padding-right: env(safe-area-inset-right);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1em 20px;
-          background-color: #000;
-          color: white;
-          height: 100px;
-          
-          position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1;
-        }
-        
-        #header span {
-          font-size: 1.5em;
-          font-weight: bold;
-        }
-        
-        .blackout {
-          background-color: black !important;
-        }
-
-        #countdown-timer {
-          position: absolute;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          padding: 20px;
-        }
-
-        #connect-btn {
-          padding: 0.5em 1em;
-          border: none;
-          border-radius: 0.25em;
-          background-color: white;
-          color: #000;
-          cursor: pointer;
-        }
-
-        #connect-btn:hover {
-          background-color: black;
-          color: white;
-        }
-
-        .form-popup {
-          display: none;
-          position: absolute;
-          top: 100%;
-          right: 0;
-          background-color: #000;
-          padding: 20px;
-          border: 1px solid #fff;
-          border-radius: 0.25em;
-          z-index: 1000;
-        }
-
-        .form-popup.open {
-          display: block;
-        }
-
-        #sign-in-form, #sign-up-form {
-          margin-bottom: 20px;
-          
-        }
-        
-        #sign-in-form input[type="submit"], #sign-up-form input[type="submit"] {
-          background-color: #fff;
-          color: #000;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 0.25em;
-          cursor: pointer;
-        }
-
-        #main {
-            padding-top: 100px; /* Add padding to account for the fixed header */
-            padding-bottom: 100px; /* Add padding to account for the fixed footer */
-            flex: 1;
-            overflow-y: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        #container {
-          scroll-snap-type: y mandatory;
-          overflow-y: scroll;
-          height: 100vh; /* or any fixed height */
-          scrollbar-width: none; /* Firefox */
-          -ms-overflow-style: none; /* IE and Edge */
-        }
-
-        #container::-webkit-scrollbar {
-          display: none; /* Chrome, Safari, and Opera */
-        }
-
-        #main-section, #subsection, #third-section {
-          scroll-snap-align: start;
-          height: 100vh; /* or any fixed height */
-          padding: 20px;
-        }
-
-        #main-section {
-          background-size: cover;
-          width:100%;
-          height:100%;
-          background-color: white;
-        }
-
-        #subsection {
-          background-size: cover;
-          width:100%;
-          height:100%;
-          background-color: white;
-        }
-
-        #third-section {
-          background-size: cover;
-          width:100%;
-          height:100%;
-          background-color: white;
-        }
-
-        #footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-        </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rositeweb</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="header">
-      <span>Rositeweb</span>
-      <button id="connect-btn">Conecteaza-ma</button>
-      <div class="form-popup">
-        <form id="sign-in-form">
-          <h2>Conectare</h2>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email"><br><br>
-          <label for="password">Parola:</label>
-          <input type="password" id="password" name="password"><br><br>
-          <input type="submit" value="Conectare">
-        </form>
-        <form id="sign-up-form">
-          <h2>Inscriere</h2>
-          <label for="new-email">Email:</label>
-          <input type="email" id="new-email" name="new-email"><br><br>
-          <label for="new-password">Parola:</label>
-          <input type="password" id="new-password" name="new-password"><br><br>
-          <label for="confirm-password">Parola:</label>
-          <input type="password" id="confirm-password" name="confirm-password"><br><br>
-          <input type="submit" value="Inscriere">
-        </form>
-      </div>
+  <div class="header">
+    <div class="logo">Rositeweb</div>
+    <div class="nav">
+      <!-- Navigation links will go here -->
     </div>
-    <div id="container">
-      <div id="main-section">
-        <h1>Buna ziua!</h1>
-        <p>Acest website este o idee despre generarea<br>
-           unor bilete unice.<br>
-           Ideea este urmatoarea, persoana interesata<br>
-           de evenimentul dumneavostra intra pe site<br>
-           pentru a obtine un bilet unic<br>
-           dupa care intra pe link-ul pe care il obtineti<br>
-           de la mine pentru a valida biletul<br>
-           si a plati la intrare.<br>
-        <p>Faceti scroll pentru urmatorul slide.</p>
-      </div>
-      <div id="subsection">
-          <h1>Scroll</h1>
-          <p>Pretul pentu implementare acestei idei<br>
-          pentru a obtine codul sursa este de 500 RON<br>
-          dar pe langa acest pret doresc si un comision<br>
-          din vanzarea biletelor la eveniment.<br>
-          <p>Va trebui sa va conectati pentru<br>
-          a vedea si intelege idea de validare<br>
-          cod de access la eveniment.<br>
-          <p>Faceti scroll pentru urmatorul slide.</p>
-      </div>
-      <div id="third-section">
-        <h1>Besleaga Alexandru Marian</h1>
-        <p>E-mail: alex.m.besleaga.91@icloud.com<br>
-           Telefon: +40 725 500 865<br>
-           Adresa: Bulevardul Pipera Tunari 152-156<br>
-        <p>Ma puteti contacta oricand dar sunt dispus sa lucrez<br>
-           doar sambata de la ora 12:00 la ora 20:00 deoarece<br>
-           acesta este programul meu de lucru online.<br>
-        <p>Daca aveti nevoie de asistenta va rog sa nu ezitati<br>
-           sa comunicati informatiile dorite a fi transmise<br>
-        <p>Multumesc anticipat pentru intelegere si pentru recomandare!</p>
-        <p>Faceti scroll inapoi pentru slide-ul anterior.</p>
-      </div>
+  </div>
+  <div class="sub-header">
+    <div class="sub-nav">
+        <a href="#">Acasa</a>
+        <a href="#">Despre</a>
+        <a href="#">Contact</a>
+  </div>
+  </div>
+  <div class="content-wrapper"></div>
+  <div class="container">
+    <div id="section1" class="section">
+      <p>Besleaga Alexandru Marian</p>
+      <p>13.08.1991</p>
+      <p>2025</p>
     </div>
-    <footer id="footer">
-      <span>All rights reserved by Rositeweb 2025.</span>
-      <div id="countdown-timer" style="float: right; padding: 20px;"></div>
-    </footer>
+    <div id="section2" class="section">
+      <p>Numele tau ?</p>
+      <p>Data nasterii ?</p>
+      <p>2025</p>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; 2025 Rositeweb. Toate drepturile rezervate.
+  </div>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('connect-btn').addEventListener('click', function() {
-        var popup = document.querySelector('.form-popup');
-        popup.classList.toggle('open');
-      });
-
-      // Close popup when clicking outside
-      document.addEventListener('click', function(event) {
-        var popup = document.querySelector('.form-popup');
-        var button = document.getElementById('connect-btn');
-        if (event.target !== popup && event.target !== button && !popup.contains(event.target) && !button.contains(event.target)) {
-          popup.classList.remove('open');
-        }
-      });
-
-      document.getElementById('sign-up-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var newEmail = document.getElementById('new-email').value;
-        var newPassword = document.getElementById('new-password').value;
-        var confirmPassword = document.getElementById('confirm-password').value;
-
-        if (newEmail && newPassword && confirmPassword && newPassword === confirmPassword) {
-          var users = JSON.parse(localStorage.getItem('users')) || [];
-          var existingUser = users.find(function(user) {
-            return user.email === newEmail;
-          });
-
-          if (existingUser) {
-            alert('Email already exists');
-          } else {
-            users.push({
-              email: newEmail,
-              password: newPassword
-            });
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify({ email: newEmail }));
-            window.location.href = 'index.html';
-          }
-        } else {
-          alert('Please fill in all fields and ensure passwords match');
-        }
-      });
-
-      document.getElementById('sign-in-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-
-        var users = JSON.parse(localStorage.getItem('users')) || [];
-        var existingUser = users.find(function(user) {
-          return user.email === email && user.password === password;
-        });
-
-        if (existingUser) {
-          localStorage.setItem('currentUser', JSON.stringify({ email: email }));
-          window.location.href = 'bilet.html';
-        } else {
-          alert('Invalid email or password');
-        }
-      });
-    });
-    
-    // Numar invers de inchidere
-    
-    const body = document.body;
-    const countdownTimerElement = document.getElementById('countdown-timer');
-
-    function blackoutWebsite() {
-      body.style.background = 'black';
-      body.style.color = 'black';
-      countdownTimerElement.style.color = 'black';
-      const elements = document.querySelectorAll('*');
-      elements.forEach(element => {
-        element.style.background = 'black';
-        element.style.color = 'black';
-      });
-    }
-
-    function countdown(seconds) {
-      let intervalId = setInterval(() => {
-        countdownTimerElement.textContent = `${seconds}`;
-        if (seconds === 0) {
-          clearInterval(intervalId);
-          blackoutWebsite();
-        }
-        seconds--;
-      }, 1000);
-    }
-
-    countdown(300);
-</script>
+<script src="script.js"></script>
 </html>
