@@ -80,8 +80,6 @@ body {
 
 .container {
   flex: 1;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   margin-top: calc(64px + 2px + 40px); /* adjust according to header and sub-header heights */
 }
 
@@ -101,6 +99,18 @@ body {
 
 #section2 {
   background-color: white;
+}
+
+#section3 {
+  background-color: whitesmoke;
+}
+
+#section4 {
+  background-color: white;
+}
+
+#section5 {
+  background-color: whitesmoke;
 }
 
 .footer {
