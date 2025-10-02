@@ -3,51 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Rositeweb</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">
-    <div class="logo">Rositeweb</div>
-    <div class="nav">
-      <!-- Navigation links will go here -->
-    </div>
-  </div>
-  <div class="sub-header">
-    <div class="sub-nav">
-        <a href="#">1991</a>
-        <a href="#">2009</a>
-        <a href="#">2013</a>
-        <a href="#">2020</a>
-        <a href="#">2025</a>
-  </div>
-  </div>
-  <div class="content-wrapper"></div>
   <div class="container">
-    <div id="section1" class="section">
-      <p style="font-weight: bold;">Besleaga Alexandru Marian</p>
-      <p>13.08.1991</p>
+    <div class="left">
+      <div class="text-block">
+        <p>Besleaga Alexandru Marian</p>
+        <span>13.08.1991</span>
+      </div>
+      <div class="text-block" style="display: none;">
+        <p>Liceul Cronos</p>
+        <span>2009 - 2013</span>
+      </div>
+      <div class="text-block">
+        <p>Universitatea Crestina Dimitrie Cantemir</p>
+        <span>2013 - 2017</span>
+        <span>(nelicentiat)</span>
+      </div>
+      <div class="text-block" style="display: none;">
+        <p>Apple</p>
+        <span>2020</span>
+        <span>(stins)</span>
+      </div>
+      <div class="text-block" style="display: none;">
+        <p>Securitate</p>
+        <span>2025</span>
+      </div>
     </div>
-    <div id="section2" class="section">
-        <p style="font-weight: bold;">Liceul Cronos</p>
-        <p>2009 - 2013</p>
-    </div>
-    <div id="section3" class="section">
-        <p style="font-weight: bold;">Universitatea Crestina Dimitrie Cantemir</p>
-        <p>2013 - 2017</p>
-    </div>
-    <div id="section4" class="section">
-        <p style="font-weight: bold;">Apple</p>
-        <p>2020</p>
-    </div>
-    <div id="section5" class="section">
-        <p style="font-weight: bold;">Securitate</p>
-        <p>2025</p>
+    <div class="scroll-container">
+      <div class="scroll-indicator" style="top: 0px;"></div>
     </div>
   </div>
-  <div class="footer">
-    &copy; 2025 Rositeweb. Toate drepturile rezervate.
-  </div>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

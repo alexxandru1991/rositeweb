@@ -2,19 +2,38 @@
 //  script.js
 //  Rositeweb
 //
-//  Created by Besleaga Alexandru Marian on 01.10.2025.
+//  Created by Besleaga Alexandru Marian on 02.10.2025.
 //
 
-let lastScrollTop = 0;
-const subHeader = document.querySelector('.sub-header');
-const headerHeight = document.querySelector('.header').offsetHeight;
+const scrollContainer = document.querySelector('.scroll-container');
+const scrollIndicator = document.querySelector('.scroll-indicator');
+const textBlocks = document.querySelectorAll('.text-block');
+let currentIndex = 0;
+let scrolling = false;
 
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  if (scrollTop <= 0) {
-    subHeader.style.top = `${headerHeight}px`; // show full sub-header
-  } else {
-    subHeader.style.top = `${headerHeight - 34}px`; // show only 6px of sub-header
+// Initialize the first block to be visible and hide the rest
+textBlocks.forEach((block, index) => {
+  block.style.display = index === 0 ? 'block' : 'none';
+});
+
+scrollContainer.addEventListener('wheel', (e) => {
+  if (scrolling) return;
+  scrolling = true;
+  e.preventDefault();
+  if (e.deltaY > 0 && currentIndex < textBlocks.length - 1) {
+    currentIndex++;
+  } else if (e.deltaY < 0 && currentIndex > 0) {
+    currentIndex--;
   }
-  lastScrollTop = scrollTop;
+
+  textBlocks.forEach((block, index) => {
+    block.style.display = index === currentIndex ? 'block' : 'none';
+  });
+
+  const scrollHeight = 250 / (textBlocks.length - 1);
+  scrollIndicator.style.top = `${currentIndex * scrollHeight}px`;
+
+  setTimeout(() => {
+    scrolling = false;
+  }, 800);
 });
