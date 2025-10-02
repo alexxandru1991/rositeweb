@@ -5,7 +5,8 @@ const years = [1991, 2013, 2017, 2020, 2025];
 let currentIndex = 0;
 let scrolling = false;
 let startY = 0;
-const lastY = 0;
+let lastY = 0;
+const threshold = 10; // Define the threshold value
 
 // Initialize the first block to be visible and hide the rest
 textBlocks.forEach((block, index) => {
