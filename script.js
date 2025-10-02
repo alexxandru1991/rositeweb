@@ -1,28 +1,24 @@
-//
-//  script.js
-//  Rositeweb
-//
-//  Created by Besleaga Alexandru Marian on 02.10.2025.
-//
-
 const scrollContainer = document.querySelector('.scroll-container');
 const scrollIndicator = document.querySelector('.scroll-indicator');
 const textBlocks = document.querySelectorAll('.text-block');
+const years = [1991, 2013, 2017, 2020, 2025];
 let currentIndex = 0;
 let scrolling = false;
+let startY = 0;
+const lastY = 0;
 
 // Initialize the first block to be visible and hide the rest
 textBlocks.forEach((block, index) => {
   block.style.display = index === 0 ? 'block' : 'none';
 });
 
-scrollContainer.addEventListener('wheel', (e) => {
+function handleScroll(delta) {
   if (scrolling) return;
   scrolling = true;
-  e.preventDefault();
-  if (e.deltaY > 0 && currentIndex < textBlocks.length - 1) {
+
+  if (delta > 0 && currentIndex < textBlocks.length - 1) {
     currentIndex++;
-  } else if (e.deltaY < 0 && currentIndex > 0) {
+  } else if (delta < 0 && currentIndex > 0) {
     currentIndex--;
   }
 
@@ -30,10 +26,41 @@ scrollContainer.addEventListener('wheel', (e) => {
     block.style.display = index === currentIndex ? 'block' : 'none';
   });
 
-  const scrollHeight = 250 / (textBlocks.length - 1);
-  scrollIndicator.style.top = `${currentIndex * scrollHeight}px`;
+  let yearDisplay = document.querySelector('.year-display');
+  if (!yearDisplay) {
+    yearDisplay = document.createElement('div');
+    yearDisplay.classList.add('year-display');
+    scrollContainer.appendChild(yearDisplay);
+  }
+  yearDisplay.textContent = years[currentIndex];
 
   setTimeout(() => {
     scrolling = false;
   }, 800);
+}
+
+scrollContainer.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  handleScroll(e.deltaY);
+});
+
+scrollContainer.addEventListener('touchstart', (e) => {
+  startY = e.touches[0].clientY;
+  lastY = startY;
+});
+
+scrollContainer.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  const currentY = e.touches[0].clientY;
+  const delta = lastY - currentY;
+  lastY = currentY;
+
+  if (Math.abs(startY - currentY) > threshold) {
+    handleScroll(delta);
+    startY = currentY;
+  }
+});
+
+scrollContainer.addEventListener('touchend', () => {
+  lastY = 0;
 });
