@@ -65,3 +65,9 @@ scrollContainer.addEventListener('touchmove', (e) => {
 scrollContainer.addEventListener('touchend', () => {
   lastY = 0;
 });
+
+document.body.addEventListener('touchmove', function(e) {
+  if (e.target.closest('.scroll-container') === null) {
+    e.preventDefault();
+  }
+}, { passive: false });
