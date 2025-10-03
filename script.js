@@ -35,7 +35,7 @@ function handleScroll(delta) {
   }
 
   if (years[currentIndex] === 1991) {
-    yearDisplay.textContent = '13.08.' + years[currentIndex];
+    yearDisplay.textContent = + years[currentIndex];
   } else {
     yearDisplay.textContent = years[currentIndex];
   }
