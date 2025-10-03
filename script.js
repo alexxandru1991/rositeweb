@@ -1,8 +1,8 @@
 const scrollContainer = document.querySelector('.scroll-container');
 const scrollIndicator = document.querySelector('.scroll-indicator');
 const textBlocks = document.querySelectorAll('.text-block');
-const years = [1991, 2013, 2017, 2020, 2025];
-let currentIndex = 0;
+const years = [1989, 1991, 2013, 2017, 2020, 2025];
+let currentIndex = 1;
 let scrolling = false;
 let startY = 0;
 let lastY = 0;
@@ -10,7 +10,7 @@ const threshold = 10; // Define the threshold value
 
 // Initialize the first block to be visible and hide the rest
 textBlocks.forEach((block, index) => {
-  block.style.display = index === 0 ? 'block' : 'none';
+  block.style.display = index === currentIndex ? 'block' : 'none';
 });
 
 function handleScroll(delta) {
@@ -33,7 +33,12 @@ function handleScroll(delta) {
     yearDisplay.classList.add('year-display');
     scrollContainer.appendChild(yearDisplay);
   }
-  yearDisplay.textContent = years[currentIndex];
+
+  if (years[currentIndex] === 1991) {
+    yearDisplay.textContent = '13.08.' + years[currentIndex];
+  } else {
+    yearDisplay.textContent = years[currentIndex];
+  }
 
   setTimeout(() => {
     scrolling = false;
