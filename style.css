@@ -76,6 +76,37 @@ body {
   }
 }
 
+.locked {
+  position: relative;
+}
+
+.lock-icon {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #333;
+  animation: pulse-lock 2s infinite;
+}
+
+@keyframes pulse-lock {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Add your existing CSS styles here */
+
 .year-display {
   position: absolute;
   font-size: 14px;
