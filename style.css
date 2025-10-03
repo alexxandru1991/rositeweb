@@ -13,7 +13,7 @@ body {
 .container {
   position: absolute;
   top: 50%;
-  left: 45%;
+  left: 40%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
