@@ -1,8 +1,8 @@
 const scrollContainer = document.querySelector('.scroll-container');
 const scrollIndicator = document.querySelector('.scroll-indicator');
 const textBlocks = document.querySelectorAll('.text-block');
-const years = [1976, 1989, 1991, 2013, 2017];
-let currentIndex = 2;
+const years = [1918, 1945, 1976, 1989, 1990, 1991, 2013, 2017];
+let currentIndex = 5;
 let scrolling = false;
 let startY = 0;
 let lastY = 0;
@@ -34,7 +34,7 @@ function handleScroll(delta) {
     scrollContainer.appendChild(yearDisplay);
   }
 
-  yearDisplay.textContent = years[currentIndex];
+  yearDisplay.textContent = years[currentIndex] === 2013 || years[currentIndex] === 2017 ? years[currentIndex].toString().substring(0, 4) : years[currentIndex].toString();
 
   setTimeout(() => {
     scrolling = false;
