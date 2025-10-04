@@ -1,7 +1,7 @@
 const scrollContainer = document.querySelector('.scroll-container');
 const scrollIndicator = document.querySelector('.scroll-indicator');
 const textBlocks = document.querySelectorAll('.text-block');
-const years = [4, 1918, 1939, 1976, 1989, 1990, 1991, 2013, 2017];
+const years = [4, 1918, 1939, 1976, 1989, 1990, 1991, 2013, 2017, 2025, 2026];
 let currentIndex = 6;
 let scrolling = false;
 let startY = 0;
